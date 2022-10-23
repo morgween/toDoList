@@ -1,35 +1,22 @@
-<!doctype html>
-<html lang="en">
-    <head>
+<%- include("header")-%>
+<div class="box" id="heading">
+    <h1><%=listTitle%></h1>
+</div>
+<div class="box">
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/css/styles.css" rel="stylesheet">
-
-        <title>toDoList</title>
-    </head>
-
-    <body>
-        <div class="box" id="heading">
-            <h1><%=listTitle%></h1>
+    <% for(var i=0; i<newListItems.length; i++ ) { %>
+        <div class="item">
+            <input type="checkbox">
+            <p><%= newListItems[i] %></p>
         </div>
-        <div class="box">
+    <%};%>
 
-            <% for(var i=0; i<newListItems.length; i++ ) { %>
-            <div class="item">
-                <input type="checkbox">
-                <p><%= newListItems[i] %></p>
-            </div>
-            <%};%>
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="list" value=<%=listTitle%>>+</button>
+        </form>
 
-            <form class="item" action="/" method="post">
-                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                <button type="submit" name="list" value=<%=listTitle%>>+</button>
-            </form>
+</div>
 
-        </div>
+<%- include("footer") -%>
 
-        <script src="app.js" charset="utf-8"></script>
-
-    </body>
-</html>
