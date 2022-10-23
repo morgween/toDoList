@@ -10,9 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 var items = [];
 var workItems = [];
 
-
 app.set("view engine","ejs");
-
 
 app.post("/",(req,res)=>{
     if (req.body.list ==="Work"){
@@ -25,9 +23,8 @@ app.post("/",(req,res)=>{
     }
 });
 
-
 app.get("/",(req,res)=>{
-    res.render("list", {listTitle : date(), newListItems : items});
+    res.render("list", {listTitle : date.getDate(), newListItems : items});
 });
 
 app.get("/work", (req,res)=>{
@@ -37,8 +34,6 @@ app.get("/work", (req,res)=>{
 app.get("/about", (req,res)=>{
     res.render("about");
 });
-
-
 
 app.listen(3000,()=>{
     console.log("Server started on port 3000");
